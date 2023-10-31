@@ -27,6 +27,7 @@
 
     <build>
         <plugins>
+            <!-- Plug in configuration for auto cleaning -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -41,8 +42,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Plug in configuration to make Jar executable -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
-
+        <!-- Custom resource directory - configuration-->
         <resources>
             <resource>
                 <directory>src/my-resource</directory>
